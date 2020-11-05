@@ -27,6 +27,11 @@
      copy:
        src: index.php
        dest: /var/www/html/
+   - name: template file added
+     become: yes
+     template:
+       src: nginx.conf.j2
+       dest: /etc/nginx/sites-available/default
    - name: confuration file enable
      become: yes
      file:
@@ -38,7 +43,6 @@
      service:
           name: nginx
           state: restarted
-
 - hosts: haproxy
   gather_facts: yes
   become: yes
@@ -49,3 +53,13 @@
    - name: Installation of haproxy
      become: yes
      apt:
+         name: haproxy
+      state: present
+   - name: Update configuraton file of haproxy
+     template:
+      src: haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
+   - name: HAProxy reinitiation
+     service:
+       name: haproxy
+       state: restarted
