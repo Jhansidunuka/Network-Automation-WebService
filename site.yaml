@@ -41,8 +41,8 @@
    - name: Restarting the Web Servers
      become: yes
      service:
-          name: nginx
-          state: restarted
+       name: nginx
+       state: restarted
 - hosts: haproxy
   gather_facts: yes
   become: yes
