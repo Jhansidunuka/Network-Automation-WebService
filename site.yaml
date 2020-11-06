@@ -15,7 +15,7 @@
    - name: php-fpm installation
      become: yes
      apt:
-      name: php7.4-fpm installation
+      name: php7.4-fpm 
       state: present
    - name: Starting nginx
      become: yes
