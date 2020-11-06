@@ -53,7 +53,7 @@
    - name: Installation of haproxy
      become: yes
      apt:
-         name: haproxy
+      name: haproxy
       state: present
    - name: Update configuraton file of haproxy
      template:
